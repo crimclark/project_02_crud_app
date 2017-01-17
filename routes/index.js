@@ -11,65 +11,44 @@ var objectId = require('mongodb').ObjectID;
 
 var url = 'mongodb://localhost:27017/crudapp';
 
-router.get('/signup', function(req, res){
-  res.render('signup');
+var multer = require('multer');
+var multerS3 = require('multer-s3');
+var aws = require('aws-sdk');
+
+
+aws.config.update({
+  secretAccessKey: 'OSf2QS5mePwtzUzBFG+9/Pat56ON5kSIJjaf66kV',
+  accessKeyId: 'AKIAJP64EUGYNTXP32CQ',
+  region: 'us-east-1'
 });
 
-router.post('/create', function(req, res){
-  var id = req.body.username;
+var s3 = new aws.S3();
 
-  var user = {
-    username: req.body.username,
-    password: req.body.password
-  }
-
-  mongo.connect(url, function(err, db){
-    db.collection('users').insertOne(user, function(err, result){
-      console.log('user created');
-      db.close();
-    });
-  });
-
-  res.redirect('/users/' + req.body.username);
+var upload = multer({
+    storage: multerS3({
+        s3: s3,
+        acl: 'public-read',
+        contentType: multerS3.AUTO_CONTENT_TYPE,
+        bucket: 'gacrudapp',
+        key: function (req, file, cb) {
+            // console.log(file);
+            cb(null, Date.now().toString()); //use Date.now() for unique file keys
+        }
+    })
 });
 
-router.get('/users/:id', function(req, res){
-  res.send('Welcome ' + req.params.id);
+router.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
 });
 
-router.post('/users/:id', function(req, res){
-  res.send('Welcome ' + req.body.id);
+router.post('/upload', upload.array('upl',1), function (req, res, next) {
+    var filename = req.files[0].originalname;
+    var fileLocation = req.files[0].location;
+    console.log(req.files);
+    res.send('Successfully uploaded ' + '<a href=\"' + fileLocation + '\">' + filename + '</a>');
 });
 
-// router.post('/create', function(req, res){
-//   passport.authenticate('local', {
-//     successRedirect: '/loginSuccess',
-//     failureRedirect: '/loginFailure'
-//   })
-// });
-
-// router.get('/loginsuccess', function(req, res){
-//   res.send('failed to authenticate');
-// });
-
-// router.get('/loginSuccess', function(req, res){
-//   res.send('successfully authenticated');
-// })
-
-// passport.serializeUser(function(user, done) {
-//   done(null, user);
-// });
-
-// passport.deserializeUser(function(user, done) {
-//   done(null, user);
-// });
-
-// passport.use(new LocalStrategy(function(username, password, done){
-//   process.nextTick(function(){
-//     //auth check logic
-//   });
-// }));
-
+// https://github.com/zishon89us/node-cheat/blob/master/aws/express_multer_s3/app.js
 
 
 

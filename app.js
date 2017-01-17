@@ -1,15 +1,24 @@
 var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-// var passport = require('passport');
-// var localStrategy = require('passport-local').Strategy;
+// var multer = require('multer'),
+// var multerS3 = require('multer-s3');
+// var aws = require('aws-sdk');
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+// var multer  = require('multer');
+
+// aws.config.update({
+//   secretAccessKey: 'OSf2QS5mePwtzUzBFG+9/Pat56ON5kSIJjaf66kV',
+//   accessKeyId: 'AKIAJP64EUGYNTXP32CQ',
+//   region: 'us-east-1'
+// });
+// var s3 = new aws.S3();
+
 
 var routes = require('./routes/index');
 
 var app = express();
+
 
 app.use(express.static(__dirname + '/public'));
 
@@ -20,6 +29,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', routes);
+
+
+
 
 
 var port = 3000;

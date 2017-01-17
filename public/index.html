@@ -8,13 +8,10 @@
 <body>
 
 
-    <input type="text" placeholder="username" id="username">
-    <input type="password" placeholder="password">
-    <div id="loginBtns">
-      <button id="login" type="submit">Login</button>
-      <button id="signup">Signup</button>
-    </div>
-
+  <form enctype="multipart/form-data" action="/upload" method="post">
+    <input type="file" name="upl" />
+    <input type="submit" value="Upload Image" name="submit" />
+  </form>
 
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"
