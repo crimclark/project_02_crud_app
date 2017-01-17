@@ -1,6 +1,11 @@
 var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+// var passport = require('passport');
+// var localStrategy = require('passport-local').Strategy;
+
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 var routes = require('./routes/index');
 
