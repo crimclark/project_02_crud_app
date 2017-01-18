@@ -31,7 +31,7 @@
 
     <ul>
       <% files.forEach(function(file) { %>
-        <li id="<%=file._id%>"><a href="<%=file.location%>"><%= file.name %></a> uploaded by <%= file.user %><button class="delete">delete</button></li>
+        <li id="<%=file.key%>"><a href="<%=file.location%>"><%= file.name %></a> uploaded by <%= file.user %><button class="delete">delete</button></li>
       <% }) %>
     </ul>
   </div>

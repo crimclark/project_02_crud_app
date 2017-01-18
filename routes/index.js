@@ -19,16 +19,16 @@ aws.config.update({
 var s3 = new aws.S3();
 
 var upload = multer({
-    storage: multerS3({
-        s3: s3,
-        acl: 'public-read',
-        contentType: multerS3.AUTO_CONTENT_TYPE,
-        bucket: 'gacrudapp',
-        key: function (req, file, cb) {
-            // console.log(file);
-            cb(null, Date.now().toString()); //use Date.now() for unique file keys
-        }
-    })
+  storage: multerS3({
+    s3: s3,
+    acl: 'public-read',
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    bucket: 'gacrudapp',
+    key: function (req, file, cb) {
+      // console.log(file);
+      cb(null, Date.now().toString()); //use Date.now() for unique file keys
+      }
+  })
 });
 
 function deleteFromAWS(key) {
@@ -43,16 +43,27 @@ function deleteFromAWS(key) {
   })
 }
 
-router.post('/files/:id/delete', function(req, res){
-  var id = objectId(req.body.id);
+// router.post('/files/:id/delete', function(req, res){
+//   var id = objectId(req.body.id);
+//   mongo.connect(url, (err, db) => {
+//     db.collection('files').find(id).toArray((err, doc) => {
+//       deleteFromAWS(doc[0].key);
+//       db.collection('files').deleteOne({_id: id}, function(res){
+//         db.close();
+//       });
+//       res.json({status: 200});
+//     });
+//   });
+// });
+
+router.post('/files/:key/delete', function(req, res){
+  var key = req.body.key;
+  deleteFromAWS(key);
   mongo.connect(url, (err, db) => {
-    db.collection('files').find(id).toArray((err, doc) => {
-      deleteFromAWS(doc[0].key);
-      db.collection('files').deleteOne({_id: id}, function(res){
+    db.collection('files').deleteOne({key: key}, function(res){
         db.close();
       });
-      res.json({status: 200});
-    });
+    res.json({status: 200});
   });
 });
 
@@ -74,27 +85,19 @@ router.post('/upload', upload.array('upl',1), function (req, res, next) {
       res.redirect('/');
     })
   })
-    // var filename = req.files[0].originalname;
-    // var fileLocation = req.files[0].location;
-    // console.log(req.files);
-    // res.send('Successfully uploaded ' + '<a href=\"' + fileLocation + '\">' + filename + '</a>');
 });
+
 
 // https://github.com/zishon89us/node-cheat/blob/master/aws/express_multer_s3/app.js
 
 router.get('/', function(req, res){
   mongo.connect(url, function(err, db){
     db.collection('files').find().toArray(function(err, docs){
-      // console.log(docs);
       db.close();
       res.render('home', {files: docs});
-    })
-  })
-})
-
-// router.get('/', function(req, res){
-//   res.render('home');
-// })
+    });
+  });
+});
 
 
 module.exports = router;
