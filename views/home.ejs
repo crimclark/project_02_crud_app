@@ -3,26 +3,43 @@
 <head>
   <title></title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="container">
+    <div id="form-container" class="card-panel grey lighten-4">
+      <form enctype="multipart/form-data" action="/upload" method="post">
+        <input type="text" placeholder="Your Name" name="name" required>
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>File</span>
+            <input type="file" name="upl" required>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Browse for file">
+          </div>
+        </div>
+        <input type="text" placeholder="tags" name="tags">
+        <button type="submit" value="Upload" name="submit" class="btn orange darken-2" id="upload-btn">Upload</button>
+          <div class="progress">
+      <div class="determinate" style="width: 70%"></div>
+  </div>
+      </form>
+    </div>
 
-  <form enctype="multipart/form-data" action="/upload" method="post">
-    <input type="text" placeholder="Your Name" name="name" required>
-    <input type="file" name="upl" required>
-    <input type="text" placeholder="tags" name="tags">
-    <input type="submit" value="Upload" name="submit" />
-  </form>
 
-  <ul>
-    <% files.forEach(function(file) { %>
-      <li><a href="<%=file.location%>"><%= file.name %></a> uploaded by <%= file.user %></li>
-    <% }) %>
-  </ul>
+    <ul>
+      <% files.forEach(function(file) { %>
+        <li><a href="<%=file.location%>"><%= file.name %></a> uploaded by <%= file.user %></li>
+      <% }) %>
+    </ul>
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
