@@ -22,3 +22,11 @@ input {
   display: block;
   margin: 0 auto;
 }
+
+.delete {
+  float: right;
+}
+
+.delete:hover {
+  cursor: pointer;
+}
