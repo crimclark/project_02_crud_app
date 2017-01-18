@@ -55,6 +55,16 @@ router.post('/files/:key/delete', function(req, res){
   });
 });
 
+router.post('/files/:key/update', function(req, res){
+  var key = req.body.key;
+  var description = req.body.description;
+  mongo.connect(url, (err, db) => {
+    db.collection('files').update({key: key}, {$set: {description: description}});
+    db.close();
+  });
+  res.json({status: 200});
+});
+
 
 router.post('/upload', upload.array('upl',1), function (req, res, next) {
   console.log(req.files[0]);
