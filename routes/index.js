@@ -31,27 +31,28 @@ var upload = multer({
     })
 });
 
-function deleteFile() {
+function deleteFromAWS(key) {
+  var s3 = new aws.S3();
   var params = {
     Bucket: 'gacrudapp',
-    Key: 'filename'
+    Key: key
   }
   s3.deleteObject(params, function(err, data){
-    if(data) {
-      console.log("file deleted successfuly");
-    } else {
-      console.log("error");
-    }
+    if (err) console.log(err, err.stack);
+    else console.log(data);
   })
 }
 
 router.post('/files/:id/delete', function(req, res){
   var id = objectId(req.body.id);
   mongo.connect(url, (err, db) => {
-    db.collection('files').deleteOne({_id: id}, function(res){
-      db.close();
+    db.collection('files').find(id).toArray((err, doc) => {
+      deleteFromAWS(doc[0].key);
+      db.collection('files').deleteOne({_id: id}, function(res){
+        db.close();
+      });
+      res.json({status: 200});
     });
-    res.json({status:200});
   });
 });
 
@@ -60,10 +61,12 @@ router.post('/files/:id/delete', function(req, res){
 // });
 
 router.post('/upload', upload.array('upl',1), function (req, res, next) {
+  console.log(req.files[0]);
   var file = {
     user: req.body.name,
     name: req.files[0].originalname,
-    location: req.files[0].location
+    location: req.files[0].location,
+    key: req.files[0].key
   }
   mongo.connect(url, function(err, db){
     db.collection('files').insertOne(file, function(err, result){
