@@ -16,7 +16,7 @@
 
   <ul>
     <% files.forEach(function(file) { %>
-      <li><%= file %></li>
+      <li><a href="<%=file.location%>"><%= file.name %></a> uploaded by <%= file.user %></li>
     <% }) %>
   </ul>
 

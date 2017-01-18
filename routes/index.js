@@ -37,6 +37,7 @@ var upload = multer({
 
 router.post('/upload', upload.array('upl',1), function (req, res, next) {
   var file = {
+    user: req.body.name,
     name: req.files[0].originalname,
     location: req.files[0].location
   }
@@ -57,12 +58,16 @@ router.post('/upload', upload.array('upl',1), function (req, res, next) {
 router.get('/', function(req, res){
   mongo.connect(url, function(err, db){
     db.collection('files').find().toArray(function(err, docs){
-      console.log(docs);
+      // console.log(docs);
       db.close();
-      res.render('index', {files: docs});
+      res.render('home', {files: docs});
     })
   })
 })
+
+// router.get('/', function(req, res){
+//   res.render('home');
+// })
 
 
 module.exports = router;

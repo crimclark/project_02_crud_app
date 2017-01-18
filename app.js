@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', routes);
 
-
+app.set('view engine', 'ejs');
 
 
 
