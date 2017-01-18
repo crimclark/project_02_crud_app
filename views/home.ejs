@@ -11,8 +11,8 @@
 <body>
   <div id="container">
     <div id="form-container" class="card-panel grey lighten-4">
-      <!-- <form enctype="multipart/form-data" action="/upload" > -->
-        <input type="text" placeholder="Your Name" name="name" id="name" required>
+      <form enctype="multipart/form-data" action="/upload" method="post">
+        <input type="text" placeholder="Your Name" name="name" required>
         <div class="file-field input-field">
           <div class="btn">
             <span>File</span>
@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea" name="description" id="description"></textarea>
+          <textarea id="textarea1" class="materialize-textarea" name="description"></textarea>
           <label for="textarea1">Description</label>
         </div>
         <div class="chips chips-placeholder"></div>

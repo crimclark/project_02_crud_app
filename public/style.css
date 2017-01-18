@@ -1,6 +1,12 @@
+/*#loginBtns {
+  display: block;
+}
+*/
 input {
   margin: 10px;
+
 }
+
 
 #container {
   padding: 50px;
@@ -12,6 +18,7 @@ input {
 }
 
 #upload-btn {
+  /*position: relative;*/
   display: block;
   margin: 0 auto;
 }
@@ -23,5 +30,8 @@ input {
 .material-icons:hover {
   cursor: pointer;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> parent of 0ee6003... cleans up a bit

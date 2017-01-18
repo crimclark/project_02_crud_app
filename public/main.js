@@ -39,19 +39,3 @@ $('.chips-placeholder').material_chip({
 });
 
 
-$('#upload-btn').click(function(){
-  var inputName = $('#upload-input').attr('name');
-  var tags = $('.chips').material_chip('data');
-  var name = $('#name').val();
-  var description = $('#description').val();
-
-  $.post('/upload', {
-    tags: tags,
-    inputName: inputName,
-    name: name,
-    description: description
-  }, function(res){
-    console.log(res);
-  });
-});
-

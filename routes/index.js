@@ -28,8 +28,7 @@ router.post('/files/:key/update', function(req, res){
 });
 
 
-router.post('/upload', aws.upload.array(req.body.i,1), function (req, res, next) {
-  console.log(req.body.tags);
+router.post('/upload', aws.upload.array('upl',1), function (req, res, next) {
   console.log(req.files[0]);
   var file = {
     user: req.body.name,
