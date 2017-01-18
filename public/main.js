@@ -23,19 +23,34 @@ $('.description').keydown(function(event){
   }
 })
 
-$('.chips').material_chip();
-  $('.chips-initial').material_chip({
-    data: [{
-      tag: 'Apple',
-    }, {
-      tag: 'Microsoft',
-    }, {
-      tag: 'Google',
-    }],
-  });
-$('.chips-placeholder').material_chip({
-  placeholder: 'Enter a tag',
-  secondaryPlaceholder: '+Tag',
+$('#tags-input').keydown(function(event){
+  var tags = $('#tags-input')
+  if (event.keyCode === 13) {
+    console.log('pressed enter');
+    $('#tags').append('#' + tags.val() + ' ');
+    tags.val('');
+  }
+})
+
+$(document).on("keypress", ":input:not(textarea)", function(event) {
+  if (event.keyCode == 13) {
+    event.preventDefault();
+  }
 });
+
+// $('.chips').material_chip();
+//   $('.chips-initial').material_chip({
+//     data: [{
+//       tag: 'Apple',
+//     }, {
+//       tag: 'Microsoft',
+//     }, {
+//       tag: 'Google',
+//     }],
+//   });
+// $('.chips-placeholder').material_chip({
+//   placeholder: 'Enter a tag',
+//   secondaryPlaceholder: '+Tag',
+// });
 
 
