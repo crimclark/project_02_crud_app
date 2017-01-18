@@ -9,7 +9,7 @@ var objectId = require('mongodb').ObjectID;
 // app.use(passport.session());
 
 
-var url = 'mongodb://localhost:27017/crudapp';
+var url = process.env.MONGODB_URI || 'mongodb://localhost:27017/crudapp';
 
 var multer = require('multer');
 var multerS3 = require('multer-s3');
