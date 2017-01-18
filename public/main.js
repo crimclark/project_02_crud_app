@@ -22,3 +22,36 @@ $('.description').keydown(function(event){
     })
   }
 })
+
+$('.chips').material_chip();
+  $('.chips-initial').material_chip({
+    data: [{
+      tag: 'Apple',
+    }, {
+      tag: 'Microsoft',
+    }, {
+      tag: 'Google',
+    }],
+  });
+$('.chips-placeholder').material_chip({
+  placeholder: 'Enter a tag',
+  secondaryPlaceholder: '+Tag',
+});
+
+
+$('#upload-btn').click(function(){
+  var inputName = $('#upload-input').attr('name');
+  var tags = $('.chips').material_chip('data');
+  var name = $('#name').val();
+  var description = $('#description').val();
+
+  $.post('/upload', {
+    tags: tags,
+    inputName: inputName,
+    name: name,
+    description: description
+  }, function(res){
+    console.log(res);
+  });
+});
+

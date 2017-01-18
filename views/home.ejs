@@ -11,26 +11,27 @@
 <body>
   <div id="container">
     <div id="form-container" class="card-panel grey lighten-4">
-      <form enctype="multipart/form-data" action="/upload" method="post">
-        <input type="text" placeholder="Your Name" name="name" required>
+      <!-- <form enctype="multipart/form-data" action="/upload" > -->
+        <input type="text" placeholder="Your Name" name="name" id="name" required>
         <div class="file-field input-field">
           <div class="btn">
             <span>File</span>
-            <input type="file" name="upl" required>
+            <input type="file" name="upl" id="upload-input" required>
           </div>
           <div class="file-path-wrapper">
             <input class="file-path validate" type="text" placeholder="Browse for file">
           </div>
         </div>
         <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea" name="description"></textarea>
+          <textarea id="textarea1" class="materialize-textarea" name="description" id="description"></textarea>
           <label for="textarea1">Description</label>
         </div>
-        <input type="text" placeholder="tags" name="tags">
+        <div class="chips chips-placeholder"></div>
+        <!-- <input type="text" placeholder="tags" name="tags"> -->
         <button type="submit" value="Upload" name="submit" class="btn orange darken-2" id="upload-btn">Upload</button>
-          <div class="progress">
-      <div class="determinate" style="width: 70%"></div>
-  </div>
+        <div class="progress">
+          <div class="determinate" style="width: 70%"></div>
+        </div>
       </form>
     </div>
 
@@ -38,8 +39,10 @@
 
       <% files.forEach(function(file) { %>
         <div id="<%=file.key%>" class="card-panel grey lighten-4">
-          <a href="<%=file.location%>"><%= file.name %></a> uploaded by <%= file.user %><i class="material-icons delete">delete</i>
-          <i class="material-icons">mode-edit</i><p class="description"><%= file.description %></p>
+          <a href="<%=file.location%>"><%= file.name %></a>
+          uploaded by <%= file.user %>
+          <i class="material-icons delete">delete</i>
+          <p class="description"><%= file.description %></p>
         </div>
       <% }) %>
 
