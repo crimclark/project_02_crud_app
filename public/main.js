@@ -1,6 +1,6 @@
 console.log('hello world');
 
-$('#delete').click(function(){
+$('.delete').click(function(){
   var id = $(this).parent().attr('id');
   $(this).parent().remove();
   $.post('/files/:key/delete', {key: id}, function(response){
