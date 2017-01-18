@@ -31,6 +31,30 @@ var upload = multer({
     })
 });
 
+function deleteFile() {
+  var params = {
+    Bucket: 'gacrudapp',
+    Key: 'filename'
+  }
+  s3.deleteObject(params, function(err, data){
+    if(data) {
+      console.log("file deleted successfuly");
+    } else {
+      console.log("error");
+    }
+  })
+}
+
+router.post('/files/:id/delete', function(req, res){
+  var id = objectId(req.body.id);
+  mongo.connect(url, (err, db) => {
+    db.collection('files').deleteOne({_id: id}, function(res){
+      db.close();
+    });
+    res.json({status:200});
+  });
+});
+
 // router.get('/', function(req, res){
 //   res.sendFile(__dirname + '/index.html');
 // });
