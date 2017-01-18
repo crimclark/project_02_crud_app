@@ -1,11 +1,13 @@
-#loginBtns {
+/*#loginBtns {
   display: block;
 }
-
+*/
 input {
   margin: 10px;
+  display: block;
 }
 
 button {
   margin: 10px;
 }
+
