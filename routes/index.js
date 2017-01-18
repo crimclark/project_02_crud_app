@@ -43,18 +43,6 @@ function deleteFromAWS(key) {
   })
 }
 
-// router.post('/files/:id/delete', function(req, res){
-//   var id = objectId(req.body.id);
-//   mongo.connect(url, (err, db) => {
-//     db.collection('files').find(id).toArray((err, doc) => {
-//       deleteFromAWS(doc[0].key);
-//       db.collection('files').deleteOne({_id: id}, function(res){
-//         db.close();
-//       });
-//       res.json({status: 200});
-//     });
-//   });
-// });
 
 router.post('/files/:key/delete', function(req, res){
   var key = req.body.key;
@@ -67,9 +55,6 @@ router.post('/files/:key/delete', function(req, res){
   });
 });
 
-// router.get('/', function(req, res){
-//   res.sendFile(__dirname + '/index.html');
-// });
 
 router.post('/upload', upload.array('upl',1), function (req, res, next) {
   console.log(req.files[0]);
@@ -77,6 +62,7 @@ router.post('/upload', upload.array('upl',1), function (req, res, next) {
     user: req.body.name,
     name: req.files[0].originalname,
     location: req.files[0].location,
+    description: req.body.description,
     key: req.files[0].key
   }
   mongo.connect(url, function(err, db){
@@ -86,7 +72,6 @@ router.post('/upload', upload.array('upl',1), function (req, res, next) {
     })
   })
 });
-
 
 // https://github.com/zishon89us/node-cheat/blob/master/aws/express_multer_s3/app.js
 

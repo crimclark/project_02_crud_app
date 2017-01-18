@@ -1,18 +1,6 @@
 var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-// var multer = require('multer'),
-// var multerS3 = require('multer-s3');
-// var aws = require('aws-sdk');
-
-// var multer  = require('multer');
-
-// aws.config.update({
-//   secretAccessKey: 'OSf2QS5mePwtzUzBFG+9/Pat56ON5kSIJjaf66kV',
-//   accessKeyId: 'AKIAJP64EUGYNTXP32CQ',
-//   region: 'us-east-1'
-// });
-// var s3 = new aws.S3();
 
 
 var routes = require('./routes/index');

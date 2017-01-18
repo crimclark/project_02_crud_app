@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
+          <textarea id="textarea1" class="materialize-textarea" name="description"></textarea>
           <label for="textarea1">Description</label>
         </div>
         <input type="text" placeholder="tags" name="tags">
@@ -38,7 +38,8 @@
 
       <% files.forEach(function(file) { %>
         <div id="<%=file.key%>" class="card-panel grey lighten-4">
-          <a href="<%=file.location%>"><%= file.name %></a> uploaded by <%= file.user %><i class="material-icons delete">delete</i>
+          <a href="<%=file.location%>"><%= file.name %></a> uploaded by <%= file.user %><i class="material-icons" id="delete">delete</i>
+          <i class="material-icons">mode-edit</i><p class="description"><%= file.description %></p>
         </div>
       <% }) %>
 

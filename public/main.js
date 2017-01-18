@@ -1,6 +1,6 @@
 console.log('hello world');
 
-$('.delete').click(function(){
+$('#delete').click(function(){
   var id = $(this).parent().attr('id');
   $(this).parent().remove();
   $.post('/files/:id/delete', {key: id}, function(response){
@@ -8,17 +8,13 @@ $('.delete').click(function(){
   });
 });
 
+$('.description').click(function(){
+  $(this).attr('contenteditable', 'true');
+});
 
-// $('#signup').click(function(){
-//   $.get('/signup', function(data){
-//     $('body').html(data);
-//   });
-// });
+$('.description').keydown(function(event){
+  if (event.keyCode === 13) {
+    $(this).attr('contenteditable', 'false');
 
-
-// $('#login').click(function(){
-//   var id = $('#username').val();
-//   $.post('/users/:id', {id: id}, function(data){
-//     $('body').html(data);
-//   });
-// });
+  }
+})
