@@ -1,4 +1,5 @@
 console.log('hello world');
+// $(".button-collapse").sideNav();
 
 $('.delete').click(function(){
   var id = $(this).parent().attr('id');

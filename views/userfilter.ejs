@@ -9,7 +9,12 @@
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+
+  <% include ./partials/nav %>
+
   <div id="container">
+
+  <h4> Posts by <%= files[0].user %> </h4>
 
   <% files.forEach(function(file) { %>
     <div id="<%=file.key%>" class="card-panel grey lighten-4">

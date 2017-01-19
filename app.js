@@ -1,14 +1,15 @@
 var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-
+var app = express();
+app.use(express.static(__dirname + '/public'));
 
 var routes = require('./routes/index');
 
-var app = express();
 
 
-app.use(express.static(__dirname + '/public'));
+
+
 
 app.set('view engine', 'ejs');
 

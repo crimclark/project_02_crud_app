@@ -61,7 +61,7 @@ router.get('/tag/:tag', function(req, res){
   mongo.connect(url, function(err, db){
     db.collection('files').find({tags: tag}).toArray(function(err, docs){
       db.close();
-      res.render('tagfilter', {files: docs});
+      res.render('tagfilter', {files: docs, tag: tag});
     })
   })
 });
