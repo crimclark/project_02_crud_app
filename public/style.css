@@ -8,6 +8,22 @@ input {
   color:#2962ff
 }*/
 
+#post-container{
+  overflow: hidden;
+  margin: 0 auto;
+  text-align:center;
+  width: 90%;
+/*  background-color: pink;*/
+}
+
+.posts {
+  display: inline-block;
+/*  float:left;*/
+/*  height: 200px;
+  width: 400px;*/
+  margin: 20px;
+}
+
 #container {
   padding: 50px;
 }
@@ -41,4 +57,8 @@ input {
 width: 300px;
 overflow:hidden;
 max-height: 1000px;
+}
+
+.card {
+  width: 250px;
 }

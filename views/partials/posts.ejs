@@ -1,18 +1,58 @@
-  <audio controls="controls"><source src="foo.wav" type="audio/wav"></audio>
-
-  <% files.forEach(function(file) { %>
-    <div id="<%=file.key%>" class="card-panel grey lighten-4">
-
-
-    <%if (file.type === 'audio/mp3') { %>
-      <audio src="<%=file.location%>"></audio>
-    <% } %>
-
-
-      <a href="<%=file.location%>"><%= file.name %></a>
+<!--   <audio controls="controls"><source src="foo.wav" type="audio/wav"></audio>
+ -->
+<!--  <div id="post-container" class="card-panel pink"> -->
+  <% files.forEach(function(file) {
+    if (file.type.includes('audio')) { %>
+    <div id="<%=file.key%>" class="card-panel posts grey lighten-4">
+    <i class="material-icons delete">delete</i>
+      <audio controls="controls"><source src="<%=file.location%>"></audio>
+      <p><a href="<%=file.location%>"><%= file.name %></a>
       uploaded by <a href="/users/<%= file.user %>"><%= file.user %></a>
-      <i class="material-icons delete">delete</i>
+
       <p class="description"><%= file.description %></p>
+        <% file.tags.forEach(function(tag){
+        var strippedTag = tag.substring(1)%>
+        <a href="/tag/<%= strippedTag %>"><%= tag %></a>
+     <% })%>
+      </div>
+  <% }  else if (file.type.includes('image')) { %>
+
+<!--       <div class="row">
+        <div class="col s12 m5"> -->
+          <div class="card posts">
+
+            <div class="card-image">
+              <img src="<%=file.location%>">
+              <span class="card-title"><i class="material-icons delete">delete</i></span>
+            </div>
+            <div class="card-content">
+              <p class="description"><%= file.description %></p>
+              <!-- <i class="material-icons delete">delete</i> -->
+              <% file.tags.forEach(function(tag){
+              var strippedTag = tag.substring(1)%>
+              <a href="/tag/<%= strippedTag %>"><%= tag %></a>
+              <% })%>
+            </div>
+            <div class="card-action">
+              <a href="<%=file.location%>"><%= file.name %></a>
+
+            </div>
+          </div>
+<!--         </div>
+      </div> -->
+
+
+
+      <% }
+
+
+
+  else { %>
+        <div id="<%=file.key%>" class="card-panel posts grey lighten-4">
+        <a href="<%=file.location%>"><%= file.name %></a>
+        uploaded by <a href="/users/<%= file.user %>"><%= file.user %></a>
+        <i class="material-icons delete">delete</i>
+        <p class="description"><%= file.description %></p>
 
 
     <% file.tags.forEach(function(tag){
@@ -20,4 +60,7 @@
         <a href="/tag/<%= strippedTag %>"><%= tag %></a>
     <% })%>
     </div>
+    <% } %>
+
   <% }) %>
+ <!--  </div> -->
