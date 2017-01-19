@@ -17,20 +17,7 @@
 
   <h4> Tagged <%= tag %> </h4>
 
-  <% files.forEach(function(file) { %>
-    <div id="<%=file.key%>" class="card-panel grey lighten-4">
-      <a href="<%=file.location%>"><%= file.name %></a>
-      uploaded by <a href="/users/<%= file.user %>"><%= file.user %></a>
-      <i class="material-icons delete">delete</i>
-      <p class="description"><%= file.description %></p>
-
-
-    <% file.tags.forEach(function(tag){
-        var strippedTag = tag.substring(1)%>
-        <a href="/tag/<%= strippedTag %>"><%= tag %></a>
-    <% })%>
-    </div>
-  <% }) %>
+  <% include ./partials/posts %>
 
   </div>
 

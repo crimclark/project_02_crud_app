@@ -36,3 +36,9 @@ input {
   resize: none;
   overflow: auto;
 }
+
+.modal{
+width: 300px;
+overflow:hidden;
+max-height: 1000px;
+}

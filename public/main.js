@@ -1,5 +1,6 @@
 console.log('hello world');
 // $(".button-collapse").sideNav();
+$('.modal').modal();
 
 $('.delete').click(function(){
   var id = $(this).parent().attr('id');
@@ -42,19 +43,36 @@ $(document).on("keypress", ":input:not(textarea)", function(event) {
 
 
 
-// $('.chips').material_chip();
-//   $('.chips-initial').material_chip({
-//     data: [{
-//       tag: 'Apple',
-//     }, {
-//       tag: 'Microsoft',
-//     }, {
-//       tag: 'Google',
-//     }],
-//   });
-// $('.chips-placeholder').material_chip({
-//   placeholder: 'Enter a tag',
-//   secondaryPlaceholder: '+Tag',
-// });
+$('.chips').material_chip();
+  $('.chips-initial').material_chip({
+    data: [{
+      tag: 'Apple',
+    }, {
+      tag: 'Microsoft',
+    }, {
+      tag: 'Google',
+    }],
+  });
+$('.chips-placeholder').material_chip({
+  placeholder: 'Enter a tag',
+  secondaryPlaceholder: '+Tag',
+});
+
+var tags = ['test', 'test2', 'test3']
+
+
+$('.chips').keydown(function(event){
+  if (event.keyCode === 13) {
+    for (var i = 0; i < tags.length; i++) {
+
+      tags.push($('.chips').material_chip('data')[i].tag);
+      $('#hiddenfield').val($('#hiddenfield').val() + tags[i])
+    }
+    console.log( $('#hiddenfield').val());
+  }
+})
+
+
+
 
 
