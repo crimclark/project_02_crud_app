@@ -21,7 +21,7 @@ $('.description').keydown(function(event){
       console.log(res);
     })
   }
-})
+});
 
 $('#tags-input').keydown(function(event){
   var tagsInput = $('#tags-input');
@@ -31,7 +31,7 @@ $('#tags-input').keydown(function(event){
     tags.val(tags.val() + '#' + tagsInput.val() + ' ');
     tagsInput.val('');
   }
-})
+});
 
 $(document).on("keypress", ":input:not(textarea)", function(event) {
   if (event.keyCode == 13) {
