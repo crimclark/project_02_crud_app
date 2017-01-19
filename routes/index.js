@@ -38,9 +38,9 @@ function parseTags(tags){
 
 router.post('/upload', aws.upload.array('upl',1), function (req, res, next) {
   var tags = req.body.tags;
-  var hidden = req.body.hidden;
-  console.log(hidden);
-  // console.log(tags);
+  // var hidden = req.body.hidden;
+  // console.log(hidden);
+  console.log(req.files);
   var file = {
     user: req.body.name,
     name: req.files[0].originalname,
