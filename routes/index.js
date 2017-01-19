@@ -27,14 +27,23 @@ router.post('/files/:key/update', function(req, res){
   res.json({status: 200});
 });
 
+function parseTags(tags){
+  tags.shift();
+  var tagsArr = tags[0].split(' ');
+  tagsArr.pop();
+  console.log(tagsArr);
+  return tagsArr;
+}
 
 router.post('/upload', aws.upload.array('upl',1), function (req, res, next) {
-  console.log(req.files[0]);
+  var tags = req.body.tags;
+  // console.log(tags);
   var file = {
     user: req.body.name,
     name: req.files[0].originalname,
     location: req.files[0].location,
     description: req.body.description,
+    tags: parseTags(tags),
     key: req.files[0].key
   }
   mongo.connect(url, function(err, db){
@@ -51,6 +60,7 @@ router.get('/', function(req, res){
   mongo.connect(url, function(err, db){
     db.collection('files').find().toArray(function(err, docs){
       db.close();
+      console.log(docs);
       res.render('home', {files: docs});
     });
   });

@@ -24,11 +24,12 @@ $('.description').keydown(function(event){
 })
 
 $('#tags-input').keydown(function(event){
-  var tags = $('#tags-input')
+  var tagsInput = $('#tags-input');
+  var tags = $('#tags');
   if (event.keyCode === 13) {
     console.log('pressed enter');
-    $('#tags').append('#' + tags.val() + ' ');
-    tags.val('');
+    tags.val(tags.val() + '#' + tagsInput.val() + ' ');
+    tagsInput.val('');
   }
 })
 

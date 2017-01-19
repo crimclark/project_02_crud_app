@@ -29,11 +29,10 @@
         <!-- <div class="chips chips-placeholder"></div> -->
         <input type="text" placeholder="tags" name="tags" id="tags-input">
         <button type="submit" value="Upload" name="submit" class="btn orange darken-2" id="upload-btn">Upload</button>
-        <div class="progress">
+<!--         <div class="progress">
           <div class="determinate" style="width: 70%"></div>
-        </div>
-        <div id="tags" name="tags">
-        </div>
+        </div> -->
+        <textarea id="tags" name="tags" readonly></textarea>
       </form>
     </div>
 
@@ -45,8 +44,15 @@
           uploaded by <%= file.user %>
           <i class="material-icons delete">delete</i>
           <p class="description"><%= file.description %></p>
-        </div>
       <% }) %>
+
+       <% files.forEach(function(file){ %>
+        <% file.tags.forEach(function(tag){ %>
+          <a href="/<%= tag %>"><%= tag %></a>
+        <% })%>
+      <% })%>
+      </div>
+
 
 
 
