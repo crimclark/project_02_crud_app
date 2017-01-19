@@ -1,5 +1,14 @@
+  <audio controls="controls"><source src="foo.wav" type="audio/wav"></audio>
+
   <% files.forEach(function(file) { %>
     <div id="<%=file.key%>" class="card-panel grey lighten-4">
+
+
+    <%if (file.type === 'audio/mp3') { %>
+      <audio src="<%=file.location%>"></audio>
+    <% } %>
+
+
       <a href="<%=file.location%>"><%= file.name %></a>
       uploaded by <a href="/users/<%= file.user %>"><%= file.user %></a>
       <i class="material-icons delete">delete</i>

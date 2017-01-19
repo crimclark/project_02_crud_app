@@ -32,21 +32,20 @@ function parseTags(tags){
   tags.shift();
   var tagsArr = tags[0].split(' ');
   tagsArr.pop();
-  console.log(tagsArr);
   return tagsArr;
 }
 
 router.post('/upload', aws.upload.array('upl',1), function (req, res, next) {
   var tags = req.body.tags;
-  // var hidden = req.body.hidden;
-  // console.log(hidden);
-  console.log(req.files);
+  var hidden = req.body.hidden;
+  console.log(hidden);
   var file = {
     user: req.body.name,
     name: req.files[0].originalname,
     location: req.files[0].location,
     description: req.body.description,
     tags: parseTags(tags),
+    type: req.files[0].mimetype,
     key: req.files[0].key
   }
   mongo.connect(url, function(err, db){
@@ -88,7 +87,7 @@ router.get('/', function(req, res){
   mongo.connect(url, function(err, db){
     db.collection('files').find().toArray(function(err, docs){
       db.close();
-      console.log(docs);
+      // console.log(docs);
       res.render('index', {files: docs});
     });
   });

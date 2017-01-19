@@ -62,16 +62,24 @@ var tags = ['test', 'test2', 'test3']
 
 
 $('.chips').keydown(function(event){
+  // var chips = $('.chips').material_chip('data');
   if (event.keyCode === 13) {
-    for (var i = 0; i < tags.length; i++) {
-
-      tags.push($('.chips').material_chip('data')[i].tag);
-      $('#hiddenfield').val($('#hiddenfield').val() + tags[i])
+    var chips = $('.chips').material_chip('data');
+    // debugger;
+    for (var i = 0; i < chips.length; i++) {
+      // var chips = $('.chips').material_chip('data');
+      // tags.push($('.chips').material_chip('data')[i].tag);
+      $('#hiddenfield').val(chips[i].tag)
     }
     console.log( $('#hiddenfield').val());
   }
 })
 
+// $('#upl-form').on('submit', function(evt) {
+//   var chips = $('.chips').material_chip('data');
+//   var tags = $('.chips').material_chip('data').map(function(obj) { return obj.tag }).join(',');
+//   $('#hiddenfield').val(tags);
+// })
 
 
 
