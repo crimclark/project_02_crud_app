@@ -38,7 +38,7 @@
   <% files.forEach(function(file) { %>
     <div id="<%=file.key%>" class="card-panel grey lighten-4">
       <a href="<%=file.location%>"><%= file.name %></a>
-      uploaded by <%= file.user %>
+      uploaded by <a href="/users/<%= file.user %>"><%= file.user %></a>
       <i class="material-icons delete">delete</i>
       <p class="description"><%= file.description %></p>
 
