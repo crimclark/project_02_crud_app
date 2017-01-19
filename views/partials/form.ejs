@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title></title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <div id="form-container" class="card-panel grey lighten-4">
+      <form enctype="multipart/form-data" action="/upload" method="post">
+        <input type="text" placeholder="Your Name" name="name" required>
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>File</span>
+            <input type="file" name="upl" id="upload-input" required>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Browse for file">
+          </div>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="textarea1" class="materialize-textarea" name="description"></textarea>
+          <label for="textarea1">Description</label>
+        </div>
+        <input type="text" placeholder="tags" name="tags" id="tags-input">
+        <button type="submit" value="Upload" name="submit" class="btn orange darken-2" id="upload-btn">Upload</button>
+<!--         <div class="progress">
+          <div class="determinate" style="width: 70%"></div>
+        </div> -->
+        <textarea id="tags" name="tags" readonly></textarea>
+      </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
