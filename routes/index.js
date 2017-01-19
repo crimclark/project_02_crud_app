@@ -56,12 +56,18 @@ router.post('/upload', aws.upload.array('upl',1), function (req, res, next) {
 
 // https://github.com/zishon89us/node-cheat/blob/master/aws/express_multer_s3/app.js
 
+router.get('/tag/:tag', function(req, res){
+  console.log(req.params.tag);
+  res.send(req.params.tag);
+});
+
+
 router.get('/', function(req, res){
   mongo.connect(url, function(err, db){
     db.collection('files').find().toArray(function(err, docs){
       db.close();
       console.log(docs);
-      res.render('home', {files: docs});
+      res.render('index', {files: docs});
     });
   });
 });
