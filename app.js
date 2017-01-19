@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var app = express();
+
 app.use(express.static(__dirname + '/public'));
 
 var routes = require('./routes/index');
@@ -19,8 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', routes);
 
-app.set('view engine', 'ejs');
-
+// app.set('view engine', 'ejs');
 
 
 var port = process.env.PORT || 3000;
