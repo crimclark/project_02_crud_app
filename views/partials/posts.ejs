@@ -10,9 +10,8 @@
       uploaded by <a href="/users/<%= file.user %>"><%= file.user %></a>
 
       <p class="description"><%= file.description %></p>
-        <% file.tags.forEach(function(tag){
-        var strippedTag = tag.substring(1)%>
-        <a href="/tag/<%= strippedTag %>"><%= tag %></a>
+        <% file.tags.forEach(function(tag){%>
+        <a href="/tag/<%= tag %>">#<%= tag %></a>
      <% })%>
       </div>
   <% }  else if (file.type.includes('image')) { %>
@@ -31,9 +30,8 @@
               <!-- <i class="material-icons delete">delete</i> -->
               <i class="material-icons delete">delete</i>
               <p class="description"><%= file.description %></p>
-              <p><br><% file.tags.forEach(function(tag){
-              var strippedTag = tag.substring(1)%>
-              <a href="/tag/<%= strippedTag %>"><%= tag %></a>
+              <p><br><% file.tags.forEach(function(tag){%>
+              <a href="/tag/<%= tag %>">#<%= tag %></a>
               <% })%>
             </div>
 
@@ -55,10 +53,9 @@
         <p class="description"><%= file.description %></p>
 
 
-    <% file.tags.forEach(function(tag){
-        var strippedTag = tag.substring(1)%>
-        <a href="/tag/<%= strippedTag %>"><%= tag %></a>
-    <% })%>
+    <% file.tags.forEach(function(tag){%>
+        <a href="/tag/<%= tag %>">#<%= tag %></a>
+     <% })%>
     </div>
     <% } %>
 

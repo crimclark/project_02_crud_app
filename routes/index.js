@@ -29,17 +29,12 @@ router.post('/files/:key/update', function(req, res){
 });
 
 function parseTags(tags){
-  tags.shift();
-  var tagsArr = tags[0].split(' ');
-  tagsArr.pop();
+  var tagsArr = tags.split(',');
   return tagsArr;
 }
 
 router.post('/upload', aws.upload.array('upl',1), function (req, res, next) {
   var tags = req.body.tags;
-  var hidden = req.body.hidden;
-  // console.log(hidden);
-  console.log(req.files[0].mimetype);
   var file = {
     user: req.body.name,
     name: req.files[0].originalname,
@@ -60,7 +55,7 @@ router.post('/upload', aws.upload.array('upl',1), function (req, res, next) {
 // https://github.com/zishon89us/node-cheat/blob/master/aws/express_multer_s3/app.js
 
 router.get('/tag/:tag', function(req, res){
-  var tag = '#' + req.params.tag;
+  var tag = req.params.tag;
   mongo.connect(url, function(err, db){
     db.collection('files').find({tags: tag}).toArray(function(err, docs){
       db.close();
