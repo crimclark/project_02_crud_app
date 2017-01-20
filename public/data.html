@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js">
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <span id="back-arrow"><a href="/">&#8592;</a></span>
+
+  <table class="striped">
+    <template id="datalist">
+      {{{table}}}
+    </template>
+  </table>
+
+  <script>
+
+    $.get('/data.json', function(res){
+      var html = '<thead><tr>';
+      var firstDoc = res[0];
+      for (var key in firstDoc){
+        html += '<th>' + key + '</th>';
+      }
+      html += '</tr></thead><tbody>';
+      // console.log(html);
+      res.forEach(function(doc){
+        html += '<tr>';
+        for (var key in doc) {
+          html += '<td>' + doc[key] + '</td>';
+        }
+        html += '</tr>';
+      });
+      html += '</tbody>'
+      // console.log(html);
+      render(html);
+    });
+
+    function render(table){
+      var htmlTemplate = $('#datalist').html();
+      var renderTemplate = Handlebars.compile(htmlTemplate);
+      var html = renderTemplate({table: table});
+
+      $('table').append(html);
+    }
+
+  </script>
+</body>
+</html>

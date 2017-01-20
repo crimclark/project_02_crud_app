@@ -2,9 +2,10 @@ var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var app = express();
+var path = require('path');
 
-app.use(express.static(__dirname + '/public'));
-
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'views'));
 var routes = require('./routes/index');
 
 var favicon = require('serve-favicon');

@@ -1,27 +1,27 @@
 <div id="modal1" class="modal">
-    <div id="form-container" class="card-panel grey lighten-4">
-      <form enctype="multipart/form-data" action="/upload" method="post" id="upl-form">
-        <input id="hiddenfield" type="hidden" name="tags"/>
-        <input type="text" placeholder="Your Name" name="name" required>
-        <div class="file-field input-field">
-          <div class="btn">
-            <span>File</span>
-            <input type="file" name="upl" id="upload-input" required>
-          </div>
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text" placeholder="Browse for file">
-          </div>
+  <div id="form-container" class="card-panel grey lighten-4">
+    <form enctype="multipart/form-data" action="/upload" method="post" id="upl-form">
+      <input id="hiddenfield" type="hidden" name="tags"/>
+      <input type="text" placeholder="Your Name" name="name" required>
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>File</span>
+          <input type="file" name="upl" id="upload-input" required>
         </div>
-         <!--  <div class="row"> -->
-            <div class="input-field col s12">
-              <textarea id="textarea1" type="text" class="materialize-textarea validate" name="description" placeholder="description"></textarea>
-              <!-- <label for="textarea1">Description</label> -->
-            </div>
-        <!--   </div> -->
-        <div class="chips chips-placeholder"></div>
-        <button type="submit" value="Upload" name="submit" class="btn orange darken-2" id="upload-btn">Upload</button>
-      </form>
-    </div>
-
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" placeholder="Browse for file">
+        </div>
+      </div>
+       <!--  <div class="row"> -->
+          <div class="input-field col s12">
+            <textarea id="textarea1" type="text" class="materialize-textarea validate" name="description" placeholder="description"></textarea>
+            <!-- <label for="textarea1">Description</label> -->
+          </div>
+      <!--   </div> -->
+      <div class="chips chips-placeholder"></div>
+      <button type="submit" value="Upload" name="submit" class="btn orange darken-2" id="upload-btn">Upload</button>
+    </form>
+  </div>
+</div>
 
 

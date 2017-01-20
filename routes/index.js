@@ -84,10 +84,23 @@ router.get('/', function(req, res){
     db.collection('files').find().toArray(function(err, docs){
       db.close();
       // console.log(docs);
-      res.render('index', {files: docs});
+        res.render('index', {files: docs});
     });
   });
 });
+
+router.get('/data', function(req, res){
+  res.sendFile('./public/data.html' , { root : './'});
+})
+
+router.get('/data.json', function(req, res){
+  mongo.connect(url, function(err, db){
+    db.collection('files').find().toArray(function(err, docs){
+      db.close();
+      res.json(docs);
+    })
+  });
+})
 
 
 module.exports = router;

@@ -1,28 +1,17 @@
 
 input {
   margin: 10px;
-
 }
-
-
-
-/*a:hover {
-  color:#2962ff
-}*/
 
 #post-container{
   overflow: hidden;
   margin: 0 auto;
   text-align:center;
   width: 90%;
-/*  background-color: pink;*/
 }
 
 .posts {
   display: inline-block;
-/*  float:left;*/
-/*  height: 200px;
-  width: 400px;*/
   margin: 20px;
 }
 
@@ -59,23 +48,32 @@ textarea, .chips{
   line-height: 1;
 }
 
-/*.chips {
-  line-height: 1;
-}*/
-
 .file-path {
   font-size: 13px !important;
 }
 
 .modal{
 width: 330px;
-/*font-size: 20px;*/
 max-height: 1000px;
 color: black;
 }
 
-
-
 .card {
   width: 250px;
 }
+
+#key {
+  font-weight: bold;
+}
+
+table {
+  font-size: 12px;
+}
+
+#back-arrow {
+  font-size: 5em;
+  color: black;
+  padding-left: 50px;
+}
+
+

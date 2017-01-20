@@ -29,6 +29,11 @@ $('.description').keydown(function(event){
   }
 });
 
+$.get('/', function(res){
+  $('body').append(res.message);
+  // console.log(res);
+});
+
 $('#tags-input').keydown(function(event){
   var tagsInput = $('#tags-input');
   var tags = $('#tags');
@@ -62,21 +67,11 @@ $('.chips-placeholder').material_chip({
   secondaryPlaceholder: '+Tag',
 });
 
-
-
-// $('.chips').keydown(function(event){
-//   // var chips = $('.chips').material_chip('data');
-//   if (event.keyCode === 13) {
-//     var chips = $('.chips').material_chip('data');
-//     // debugger;
-//     for (var i = 0; i < chips.length; i++) {
-//       // var chips = $('.chips').material_chip('data');
-//       // tags.push($('.chips').material_chip('data')[i].tag);
-//       $('#hiddenfield').val(chips[i].tag)
-//     }
-//     console.log( $('#hiddenfield').val());
-//   }
-// })
+$('#data-btn').on('click', function(evt){
+  $.get('/data', function(res){
+    console.log(res);
+  })
+});
 
 $('#upl-form').on('submit', function(evt) {
   var chips = $('.chips').material_chip('data');
