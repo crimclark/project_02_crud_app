@@ -4,6 +4,8 @@ input {
 
 }
 
+
+
 /*a:hover {
   color:#2962ff
 }*/
@@ -29,7 +31,7 @@ input {
 }
 
 #form-container{
-  width: 40%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -53,11 +55,26 @@ input {
   overflow: auto;
 }
 
-.modal{
-width: 300px;
-overflow:hidden;
-max-height: 1000px;
+textarea, .chips{
+  line-height: 1;
 }
+
+/*.chips {
+  line-height: 1;
+}*/
+
+.file-path {
+  font-size: 13px !important;
+}
+
+.modal{
+width: 330px;
+/*font-size: 20px;*/
+max-height: 1000px;
+color: black;
+}
+
+
 
 .card {
   width: 250px;

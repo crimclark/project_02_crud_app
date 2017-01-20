@@ -10,7 +10,7 @@
   <% include ./partials/nav %>
 
   <div id="container">
-    <div id="form-container" class="card-panel grey lighten-4">
+<!--     <div id="form-container" class="card-panel grey lighten-4">
       <form enctype="multipart/form-data" action="/upload" method="post" id="upl-form">
         <input id="hiddenfield" type="hidden" name="tags"/>
         <input type="text" placeholder="Your Name" name="name" required>
@@ -29,47 +29,15 @@
         </div>
         <div class="chips chips-placeholder"></div>
         <button type="submit" value="Upload" name="submit" class="btn orange darken-2" id="upload-btn">Upload</button>
-
       </form>
-    </div>
+    </div> -->
 
-  <div id="post-container" >
+  <div id="post-container">
 
     <% include ./partials/posts %>
 
   </div>
 
-  <a class="waves-effect waves-light btn" href="#modal1">Upload</a>
-
-  <!-- Modal Structure -->
-    <div id="modal1" class="modal">
-      <!-- <div class="modal-content"> -->
-        <div id="form-container" class="modal-content grey lighten-4">
-          <form enctype="multipart/form-data" action="/upload" method="post">
-            <input type="text" placeholder="Your Name" name="name" required>
-            <div class="file-field input-field">
-              <div class="btn">
-                <span>File</span>
-                <input type="file" name="upl" id="upload-input" required>
-              </div>
-              <div class="file-path-wrapper">
-                <input class="file-path validate" type="text" placeholder="Browse for file">
-              </div>
-            </div>
-            <div class="input-field col s12">
-              <textarea id="textarea1" class="materialize-textarea" name="description"></textarea>
-              <label for="textarea1">Description</label>
-            </div>
-            <input type="text" placeholder="tags" name="tags" id="tags-input">
-            <button type="submit" value="Upload" name="submit" class="btn orange darken-2" id="upload-btn">Upload</button>
-    <!--         <div class="progress">
-              <div class="determinate" style="width: 70%"></div>
-            </div> -->
-            <textarea id="tags" name="tags" readonly></textarea>
-          </form>
-        </div>
-     <!--  </div> -->
-    </div>
 
 
   </div>
