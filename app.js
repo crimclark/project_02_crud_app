@@ -7,6 +7,8 @@ app.use(express.static(__dirname + '/public'));
 
 var routes = require('./routes/index');
 
+var favicon = require('serve-favicon');
+app.use(favicon(__dirname + '/public/favicon.ico'));
 
 
 
