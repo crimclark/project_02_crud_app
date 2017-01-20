@@ -3,7 +3,7 @@
 <!--  <div id="post-container" class="card-panel pink"> -->
   <% files.forEach(function(file) {
     if (file.type.includes('audio')) { %>
-    <div id="<%=file.key%>" class="card-panel posts grey lighten-4">
+    <div class="card-panel posts grey lighten-4" id="<%=file.key%>">
     <i class="material-icons delete">delete</i>
       <audio controls="controls"><source src="<%=file.location%>"></audio>
       <p><a href="<%=file.location%>"><%= file.name %></a>
@@ -19,24 +19,23 @@
 
 <!--       <div class="row">
         <div class="col s12 m5"> -->
-          <div class="card posts">
+          <div class="card posts" id="<%=file.key%>">
 
             <div class="card-image">
               <img src="<%=file.location%>">
-              <span class="card-title"><i class="material-icons delete">delete</i></span>
+
             </div>
             <div class="card-content">
-              <p class="description"><%= file.description %></p>
+              <a href="<%=file.location%>"><%= file.name %></a>
+                uploaded by <a href="/users/<%= file.user %>"><%= file.user %></a>
               <!-- <i class="material-icons delete">delete</i> -->
-              <% file.tags.forEach(function(tag){
+              <span class="card-title"><i class="material-icons delete">delete</i></span>
+              <p><br><% file.tags.forEach(function(tag){
               var strippedTag = tag.substring(1)%>
               <a href="/tag/<%= strippedTag %>"><%= tag %></a>
               <% })%>
             </div>
-            <div class="card-action">
-              <a href="<%=file.location%>"><%= file.name %></a>
 
-            </div>
           </div>
 <!--         </div>
       </div> -->
@@ -48,7 +47,7 @@
 
 
   else { %>
-        <div id="<%=file.key%>" class="card-panel posts grey lighten-4">
+        <div class="card-panel posts grey lighten-4" id="<%=file.key%>">
         <a href="<%=file.location%>"><%= file.name %></a>
         uploaded by <a href="/users/<%= file.user %>"><%= file.user %></a>
         <i class="material-icons delete">delete</i>

@@ -3,8 +3,9 @@ console.log('hello world');
 $('.modal').modal();
 
 $('.delete').click(function(){
-  var id = $(this).parent().attr('id');
-  $(this).parent().remove();
+  var post = $(this).closest('.posts');
+  var id = $(this).closest('.posts').attr('id');
+  post.remove();
   $.post('/files/:key/delete', {key: id}, function(response){
     console.log(response);
   });
@@ -16,8 +17,11 @@ $('.description').click(function(){
 
 $('.description').keydown(function(event){
   var description = $(this).text();
-  var id = $(this).parent().attr('id');
+
   if (event.keyCode === 13) {
+
+    var id = $(this).closest('.posts').attr('id');
+    console.log(id);
     $(this).attr('contenteditable', 'false');
     $.post('/files/:key/update', {description: description, key: id}, function(res){
       console.log(res);
