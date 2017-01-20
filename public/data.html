@@ -49,7 +49,6 @@
       var htmlTemplate = $('#datalist').html();
       var renderTemplate = Handlebars.compile(htmlTemplate);
       var html = renderTemplate({table: table});
-
       $('table').append(html);
     }
 

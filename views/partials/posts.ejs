@@ -1,55 +1,41 @@
-
-  <% files.forEach(function(file) {
+<% files.forEach(function(file) {
     if (file.type.includes('audio')) { %>
-    <div class="card-panel posts grey lighten-4" id="<%=file.key%>">
-    <i class="material-icons delete">delete</i>
-      <audio controls="controls"><source src="<%=file.location%>"></audio>
-      <p><a href="<%=file.location%>"><%= file.name %></a>
-      uploaded by <a href="/users/<%= file.user %>"><%= file.user %></a>
-
-      <p class="description"><%= file.description %></p>
-        <% file.tags.forEach(function(tag){%>
-        <a href="/tag/<%= tag %>">#<%= tag %></a>
-     <% })%>
-      </div>
-  <% }  else if (file.type.includes('image')) { %>
-
-          <div class="card posts" id="<%=file.key%>">
-
-            <div class="card-image">
-              <img src="<%=file.location%>">
-
-            </div>
-            <div class="card-content">
-              <a href="<%=file.location%>"><%= file.name %></a>
-                uploaded by <a href="/users/<%= file.user %>"><%= file.user %></a>
-              <!-- <i class="material-icons delete">delete</i> -->
-              <i class="material-icons delete">delete</i>
-              <p class="description"><%= file.description %></p>
-              <p><br><% file.tags.forEach(function(tag){%>
-              <a href="/tag/<%= tag %>">#<%= tag %></a>
-              <% })%>
-            </div>
-
-          </div>
-
-      <% }
-
-
-
-  else { %>
-        <div class="card-panel posts grey lighten-4" id="<%=file.key%>">
-        <a href="<%=file.location%>"><%= file.name %></a>
-        uploaded by <a href="/users/<%= file.user %>"><%= file.user %></a>
+      <div class="card-panel posts grey lighten-4" id="<%=file.key%>">
         <i class="material-icons delete">delete</i>
+        <audio controls="controls"><source src="<%=file.location%>"></audio>
+        <p><a href="<%=file.location%>"><%= file.name %></a>
+        uploaded by <a href="/users/<%= file.user %>"><%= file.user %></a>
         <p class="description"><%= file.description %></p>
-
-
-    <% file.tags.forEach(function(tag){%>
-        <a href="/tag/<%= tag %>">#<%= tag %></a>
-     <% })%>
-    </div>
+        <% file.tags.forEach(function(tag){%>
+              <a href="/tag/<%= tag %>">#<%= tag %></a>
+        <% })%>
+      </div>
+    <% } else if (file.type.includes('image')) { %>
+            <div class="card posts" id="<%=file.key%>">
+              <div class="card-image">
+                <img src="<%=file.location%>">
+              </div>
+                <div class="card-content">
+                  <a href="<%=file.location%>"><%= file.name %></a>
+                  uploaded by <a href="/users/<%= file.user %>"><%= file.user %></a>
+                  <i class="material-icons delete">delete</i>
+                  <p class="description"><%= file.description %></p>
+                  <p><br>
+                  <% file.tags.forEach(function(tag){%>
+                    <a href="/tag/<%= tag %>">#<%= tag %></a>
+                  <% })%>
+                </div>
+            </div>
+      <% } else { %>
+        <div class="card-panel posts grey lighten-4" id="<%=file.key%>">
+          <a href="<%=file.location%>"><%= file.name %></a>
+          uploaded by <a href="/users/<%= file.user %>"><%= file.user %></a>
+          <i class="material-icons delete">delete</i>
+          <p class="description"><%= file.description %></p>
+          <% file.tags.forEach(function(tag){%>
+              <a href="/tag/<%= tag %>">#<%= tag %></a>
+          <% })%>
+        </div>
     <% } %>
-
   <% }) %>
 

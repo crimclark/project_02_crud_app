@@ -14,7 +14,7 @@ router.post('/files/:key/delete', function(req, res){
     db.collection('files').deleteOne({key: key}, function(res){
         db.close();
       });
-    res.json({status: 200});
+    res.redirect('/');
   });
 });
 
