@@ -8,4 +8,6 @@
 
 - User can click on tags or uploader name to filter posts
 
+- User can edit description of post and update field in database
+
 - User can delete post to remove reference in database and delete from cloud storage
