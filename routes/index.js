@@ -4,7 +4,6 @@ var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var aws = require('../config/aws');
 
-
 var url = process.env.MONGODB_URI || 'mongodb://localhost:27017/crudapp';
 
 router.post('/files/:key/delete', function(req, res){
@@ -29,12 +28,16 @@ router.post('/files/:key/update', function(req, res){
 });
 
 function parseTags(tags){
-  var tagsArr = tags.split(',');
-  return tagsArr;
+  if (tags) {
+    var tagsArr = tags.split(',');
+    return tagsArr;
+  }
+  return;
 }
 
 router.post('/upload', aws.upload.array('upl',1), function (req, res, next) {
   var tags = req.body.tags;
+  console.log('tags:' + tags);
   var file = {
     user: req.body.name,
     name: req.files[0].originalname,
@@ -78,13 +81,11 @@ router.get('/form', function(req, res){
   res.render('form');
 });
 
-
 router.get('/', function(req, res){
   mongo.connect(url, function(err, db){
     db.collection('files').find().toArray(function(err, docs){
       db.close();
-      // console.log(docs);
-        res.render('index', {files: docs});
+      res.render('index', {files: docs});
     });
   });
 });
@@ -101,6 +102,5 @@ router.get('/data.json', function(req, res){
     })
   });
 })
-
 
 module.exports = router;

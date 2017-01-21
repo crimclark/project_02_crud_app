@@ -25,32 +25,30 @@
 
   <script>
 
-    $.get('/data.json', function(res){
-      var html = '<thead><tr>';
-      var firstDoc = res[0];
-      for (var key in firstDoc){
-        html += '<th>' + key + '</th>';
-      }
-      html += '</tr></thead><tbody>';
-      // console.log(html);
-      res.forEach(function(doc){
-        html += '<tr>';
-        for (var key in doc) {
-          html += '<td>' + doc[key] + '</td>';
-        }
-        html += '</tr>';
-      });
-      html += '</tbody>'
-      // console.log(html);
-      render(html);
-    });
-
-    function render(table){
-      var htmlTemplate = $('#datalist').html();
-      var renderTemplate = Handlebars.compile(htmlTemplate);
-      var html = renderTemplate({table: table});
-      $('table').append(html);
+  $.get('/data.json', function(res){
+    var html = '<thead><tr>';
+    var firstDoc = res[0];
+    for (var key in firstDoc){
+      html += '<th>' + key + '</th>';
     }
+    html += '</tr></thead><tbody>';
+    res.forEach(function(doc){
+      html += '<tr>';
+      for (var key in doc) {
+        html += '<td>' + doc[key] + '</td>';
+      }
+      html += '</tr>';
+    });
+    html += '</tbody>'
+    render(html);
+  });
+
+  function render(table){
+    var htmlTemplate = $('#datalist').html();
+    var renderTemplate = Handlebars.compile(htmlTemplate);
+    var html = renderTemplate({table: table});
+    $('table').append(html);
+  }
 
   </script>
 </body>
