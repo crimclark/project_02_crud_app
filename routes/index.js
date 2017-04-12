@@ -1,10 +1,14 @@
-var express = require('express');
-var router = express.Router();
-var mongo = require('mongodb').MongoClient;
-var objectId = require('mongodb').ObjectID;
-var aws = require('../config/aws');
+const express = require('express');
+const router = express.Router();
+const mongo = require('mongodb').MongoClient;
+const objectId = require('mongodb').ObjectID;
+const aws = require('../config/aws');
 
 var url = process.env.MONGODB_URI || 'mongodb://localhost:27017/crudapp';
+
+const File = require('../models/File');
+
+
 
 router.post('/files/:key/delete', function(req, res){
   var key = req.body.key;
