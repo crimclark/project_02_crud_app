@@ -85,13 +85,11 @@ router.get('/form', function(req, res){
   res.render('form');
 });
 
-router.get('/', function(req, res){
-  mongo.connect(url, function(err, db){
-    db.collection('files').find().toArray(function(err, docs){
-      db.close();
-      res.render('index', {files: docs});
-    });
-  });
+router.get('/', (req, res, next) => {
+  File.find( (err, files) => {
+    if (err) throw err;
+    res.render('index', {files: files})
+  })
 });
 
 router.get('/data', function(req, res){
